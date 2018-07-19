@@ -1,0 +1,110 @@
+Question 1: Clean the room function: given an input of [1,2,4,591,392,391,2,5,10,2,1,1,1,20,20], make a function that organizes these into individual array that is ordered. For example answer(ArrayFromAbove) should return: [[1,1,1,1],[2,2,2], 4,5,10,[20,20], 391, 392,591]. Bonus: Make it so it organizes strings differently from number types. i.e. [1, "2", "3", 2] should return [[1,2], ["2", "3"]]
+
+
+let que=[1,2,4,591,392,391,2,5,10,2,1,1,1,20,20]
+
+let alv=[]
+
+const pusep=(a)=>alv[a]?alv[a]++:alv[a]=1
+que.forEach(pusep)
+
+let toArr53 =(array) =>array.forEach((a)=>alv[a]?alv[a]++:alv[a]=1)
+
+
+let toArr53 =(array) =>{
+	let temp=[];
+	let out=[];
+	array.forEach((a)=>temp[a]?temp[a]++:temp[a]=1);
+	temp.forEach( (b)=>console.log(b[0]))
+	return out
+}
+
+
+
+let toArr532 = (array) => {
+	let temp = [];
+	let out = [];
+	array.forEach((a) => temp[a] ? temp[a]++ : temp[a] = 1);
+	temp.forEach((value, index) => {
+		if (value == 1) {
+			out.push(index)
+		} else {
+			let temp2 = [];
+			for (var i = 0; i < value; i++) {
+				temp2.push(index)
+			}
+			out.push(temp2)
+		}
+		
+	});
+	return out;
+}
+
+===============================
+
+let qu=[1, "2", "3", 2]
+# should return [[1,2], ["2", "3"]]
+
+let toArr532 = (array) => {
+	let tempn = [];
+	let temps = [];
+	let out2 = [];
+	array.forEach((a) => typeof a === 'string' ? temps[a] ? temps["\""+a+"\""]++ : temps["\""+a+"\""] = 1: tempn[a] ? tempn[a]++ : tempn[a] = 1)
+
+	totalout = (arr) => {
+		console.log(arr)
+		let out = [];
+		Object.entries(arr).forEach(([key, value]) =>{
+			if (value == 1) {
+				out.push(key)
+			} else {
+				let temp2 = [];
+				for (var i = 0; i < value; i++) {
+					temp2.push(key)
+				}
+				out.push(temp2)
+			}
+		});
+		
+		return out;
+	}
+	
+	out2.push(totalout(tempn));
+	out2.push(totalout(temps));
+
+	return out2;
+}
+
+
+
+----------------
+
+let toArrm = (array) => {
+	let tempn = [];
+	let temps = {};
+	let out2 = [];
+	array.forEach((a) => typeof a === 'string' ? temps[a] ? temps[a]++ : temps[a] = 1: tempn[a] ? tempn[a]++ : tempn[a] = 1)
+
+	totalout = (arr) => {
+		console.log(arr)
+		let out = [];
+		Object.entries(arr).forEach(([key, value]) =>{
+			if (value == 1) {
+				out.push(key)
+			} else {
+				let temp2 = [];
+				for (var i = 0; i < value; i++) {
+					temp2.push(key)
+				}
+				out.push(temp2)
+			}
+		});
+		
+		return out;
+	}
+	
+	out2.push(Object.entries(totalout(tempn)).map(value=>{return Number(value[1])}));
+	out2.push(totalout(temps));
+
+	return out2;
+}
